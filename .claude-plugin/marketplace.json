@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "lavora-plugin",
+  "description": "Ciclo di sviluppo guidato per un'app legacy su VM di sviluppo parallele: dalla task alla copertura provata, con ClickUp come tracker.",
+  "owner": {
+    "name": "CHANGE_ME"
+  },
+  "plugins": [
+    {
+      "name": "lavora",
+      "source": "./plugins/lavora",
+      "description": "Catena di skill per sviluppare una task end-to-end: apertura dell'ambiente, lettura della task, sviluppo, revisione, test da operatore, chiusura su ClickUp.",
+      "category": "development"
+    }
+  ]
+}

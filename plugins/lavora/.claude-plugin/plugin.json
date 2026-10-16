@@ -1,0 +1,8 @@
+{
+  "name": "lavora",
+  "version": "1.0.0",
+  "description": "Ciclo di sviluppo a 42 passi (/lavora) e le 15 skill che chiama: lettura della task, verifica di cosa è già fatto altrove, sviluppo, standard di codice, revisione, test da operatore, chiusura su ClickUp.",
+  "author": {
+    "name": "CHANGE_ME"
+  }
+}

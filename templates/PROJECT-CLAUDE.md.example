@@ -1,0 +1,84 @@
+# CLAUDE.md del progetto — scheletro minimo
+
+Le skill di questo plugin citano in continuazione «il `CLAUDE.md` del progetto», per numero di
+sezione: è il contratto su cui sono scritte. Questo file è lo **scheletro**, non un `CLAUDE.md`
+pronto all'uso — ogni sezione va riempita con le regole vere del tuo codebase, del tuo server e
+del tuo flusso ClickUp. Tienilo nella cartella da cui lavori (non nel repo dell'app), e tienine
+una copia — o il suo equivalente — anche sul server, perché alcune skill (`applica-standard`,
+`apri-dev1`) leggono **entrambi**.
+
+---
+
+## ⛔⛔ REGOLA ZERO — non suggerire mai i comandi di workflow
+
+`/leggi-task`, `/rileggi-task`, `/testa`, `/commita` e gli altri comandi di questa catena
+(`/sviluppa`, `/lavora`, `/applica-standard`, `/test-operatore`, `/valuta-pendenze`,
+`/obiettivi`, `/aggiorna-task`, `/pendenze`) **non si suggeriscono mai di propria iniziativa**,
+in nessuna forma, nemmeno indiretta («ora andrebbe testato», «resta da committare»). Li lancia
+solo l'utente, quando decide lui.
+
+*(Questa regola è il motivo per cui le skill funzionano senza intasare la conversazione di
+proposte: toglila e perdi il punto centrale di tutto l'impianto.)*
+
+---
+
+## 0. Il titolo della chat: slot, cartella, branch
+
+Come le skill risalgono dal titolo della chat a *quale* copia del codice stanno guardando.
+Nell'originale: una fila di tag tra quadre seguita dal branch (`[7][test] nome-branch`), dove
+l'intero puro `[n]` è lo slot (`[0]` = la base, `[n]` = la variante `n`) e `[devNN]` indica su
+quale VM, con una mappa slot→cartella→host. Scrivi qui la tua versione: come si chiamano le tue
+cartelle/worktree, come si risolve lo slot, qual è il comando (sola lettura) che le skill devono
+lanciare per verificare che la cartella sia davvero sul branch del titolo.
+
+## 1. Il server
+
+Come ci si connette (alias SSH, utenza, chiave), dove sta il codice, dove le regole di
+scrittura del codice (il `CLAUDE.md` *del codebase*, diverso da questo), dove il materiale delle
+task, come si verifica la sintassi se la versione del linguaggio in produzione non è quella di
+default sul server.
+
+## 2. La shell: quoting dei comandi remoti
+
+Le regole misurate per questo progetto: quando si usa il tool Bash e quando PowerShell, come si
+quota un comando `ssh` che contiene virgolette o pipe, cosa evitare nei pattern (`<`, `>`, `#`
+scoperti), cosa fare dopo un comando andato storto.
+
+## 4. Una cartella per branch, in locale
+
+La convenzione di dove vivono le note di lavoro (piano, caso di prova, baseline) e cosa invece
+resta solo sul server.
+
+## 5. Istruzioni per il tracker (ClickUp o altro)
+
+Come si trova la card dal branch, quali segnalazioni vanno sul tracker e quali no, il formato
+dei commenti di chiusura, cosa allegare, chi firma i commenti automatici.
+
+### 5.3 Le cron-job non si attivano da sole
+
+Se il progetto ha job pianificati, qui va detto che l'attivazione è un passo manuale.
+
+### 5.4 Commenti di chiusura
+
+Formato esatto (marcatore di apertura, numerazione, allegati), e come si cattura uno
+screenshot "prima" quando lo stato precedente non esiste più sulla macchina.
+
+## 7. Database di test
+
+### 7.1 Comandi diretti sul DB
+
+Come si leggono e si scrivono dati di test, e la regola — se vale per il tuo setup — sul
+quoting dei comandi di scrittura lanciati da PowerShell/Bash.
+
+## 8. Fatti dell'ambiente di sviluppo
+
+Cose vere in ambiente di sviluppo che cambiano **come si prova** una funzionalità: es. le mail
+inviate da un ambiente di test non escono davvero, finiscono in una casella interna — se è così
+anche da te, scrivilo qui con la condizione esatta che lo rende vero, così le skill di test
+smettono di trattarlo come "effetto su terzi" da evitare.
+
+---
+
+*Le skill citano altre sezioni per numero via via che compaiono nei singoli `SKILL.md`
+(`§0`…`§8`): questo scheletro copre solo quelle citate più spesso. Aggiungi le altre che il tuo
+progetto richiede — la numerazione non è vincolata, basta che resti stabile una volta scelta.*

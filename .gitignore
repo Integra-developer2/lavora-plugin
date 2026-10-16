@@ -1,0 +1,16 @@
+# Valori reali: mai committarli, solo .env.example resta nel repo.
+.env
+.env.local
+
+# Stato di avanzamento di /lavora e materiale generato dalle skill mentre lavorano
+# (riprodotto a runtime, non va versionato qui dentro).
+ciclo.md
+STANDARD.md
+obiettivi.md
+valuta-pendenze.md
+task.md
+plan.md
+bug.md
+review-*/
+*.bak
+*.bak-*
